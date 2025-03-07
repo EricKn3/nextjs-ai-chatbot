@@ -53,6 +53,7 @@ export function Chat({
     },
     onError: (error) => {
       toast.error('An error occured, please try again!');
+      console.error("Ollama API error:", error);
     },
   });
 

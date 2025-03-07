@@ -1,5 +1,6 @@
 import { openai } from '@ai-sdk/openai';
 import { google } from '@ai-sdk/google';
+import { ollama, createOllama, OllamaProviderSettings } from 'ollama-ai-provider'
 import { fireworks } from '@ai-sdk/fireworks';
 import {
   customProvider,
@@ -8,6 +9,8 @@ import {
 } from 'ai';
 
 export const DEFAULT_CHAT_MODEL: string = 'chat-model-small';
+
+//const ollamamodel = createOllama({baseURL: 'http://192.168.1.96:7869/api'}).chat('phi3:mini')
 
 export const myProvider = customProvider({
   languageModels: {
@@ -18,7 +21,7 @@ export const myProvider = customProvider({
       middleware: extractReasoningMiddleware({ tagName: 'think' }),
     }),
     //'title-model': openai('gpt-4-turbo'),
-    'title-model': google('gemini-2.0-flash-001'),
+    'title-model': ollama('phi3:mini'),
     'artifact-model': openai('gpt-4o-mini'),
   },
   imageModels: {
