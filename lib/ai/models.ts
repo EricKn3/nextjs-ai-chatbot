@@ -1,4 +1,5 @@
 import { openai } from '@ai-sdk/openai';
+import { google } from '@ai-sdk/google';
 import { fireworks } from '@ai-sdk/fireworks';
 import {
   customProvider,
@@ -16,7 +17,8 @@ export const myProvider = customProvider({
       model: fireworks('accounts/fireworks/models/deepseek-r1'),
       middleware: extractReasoningMiddleware({ tagName: 'think' }),
     }),
-    'title-model': openai('gpt-4-turbo'),
+    //'title-model': openai('gpt-4-turbo'),
+    'title-model': google('gemini-2.0-flash-001'),
     'artifact-model': openai('gpt-4o-mini'),
   },
   imageModels: {
